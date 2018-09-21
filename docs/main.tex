@@ -1,0 +1,75 @@
+\documentclass[]{article}
+
+\usepackage{amsmath}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{mybib.bib}
+
+%opening
+\title{Multiple Disjunctively Constrained Knapsack Problem}
+\author{Marco Favorito}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In this document, we will present a problem, \emph{Multiple Disjunctively Constrained Knapsack Problem} (MDCKP), that is a combination of well-known problems: \emph{Multiple 0-1 Knapsack Problem} (MKP) and \emph{Disjunctively Constrained Knapsack Problem} (DCKP). Linear programming formulation is provided, as well as correlations with other Knapsack problem variants. Finally, we describe a (naive) algorithm.
+\end{abstract}
+
+\section{Introduction}
+
+Multiple Disjunctively Constrained Knapsack Problem (MDCKP) is a combination of two Knapsack-like problems, namely: 
+
+\begin{itemize}
+	\item Multiple 0-1 Knapsack Problem (MKP) \cite{Lagoudakis96the0-1, Martello:1990:KPA:98124};
+	\item Disjunctively Constrained Knapsack Problem (DCKP) \cite{Senisuka_reductionand}
+\end{itemize}
+
+Informally, it is about how to assign $n$ items to $m$ knapsacks, each of them with limited capacity, in order to maximize the total profit of assigned items, where:
+\begin{itemize}
+	\item each item has a weight;
+	\item there are some items that cannot be assigned to the same knapsack, due to intrinsic incompatibility.
+\end{itemize}
+
+\section{Linear Programming}
+More formally, we have $n$ items, each of them with $p_1, \dots, p_n$ profits and $w_1, \dots, w_n$ weights.  Each of them can be assigned to only one of the $m$ knapsacks, which have capacities $c_1, \dots, c_m$. Let $E$ be the set of incompatible pairs, such that $(i, j)\in E$ iff items $i$ and $j$ are incompatible. To avoid duplicates, we define $E \subset \{(i, j) | 1 \le i \neq j \le n\}$ and assume $E$ to be a reflective relation.
+
+Now follow a LP formulation of the problem:
+
+\begin{align*}
+\text{maximize }   & \sum_j^m \sum_i^n p_i x_{ij} 	&\\
+\text{subject to } & \sum_i^n w_i x_{ij} \le c_j 	& j \in M = \{1, \dots m\}\\
+				   & \sum_j^m x_{ij} \le 1 			& i \in N = \{1, \dots n\}\\
+				   & x_{kj} + x_{hj} \le 1			& (k, h)\in E, j\in M\\
+				   & x_{ij} \in \{0, 1\} 			& i \in N, j \in M\\
+\end{align*}
+where:
+
+\begin{equation*}
+x_{ij} = \begin{cases}
+	1 & \text{if item $i$ is assigned to knapsack $j$} \\
+	0 & \text{otherwise}
+\end{cases}
+\end{equation*}
+
+Notice: with $E=\emptyset$ and $m=1$, the problem reduces to the classic 0-1 Knapsack problem. Hence, MDCKP is $\mathcal{NP}$-hard, since KP is $\mathcal{NP}$-hard too.
+
+\section{Naive Approximation Algorithm}
+The simplest approximation algorithm one can think of is the following:
+\begin{itemize}
+	\item sort the items by non-increasing profit per weight, that is:
+	\begin{equation*}
+		p_1/w_1 \ge p_2/w_2 \ge \dots \ge p_n/w_n
+	\end{equation*}
+	\item start to fill up the knapsacks and, if there is not enough capacity or there is some incompatibility with other items, then go to the next knapsack. If no knapsack is available, then leave the item out.
+	\item perform some local search algorithm by defining the neighborhood of a solution as the following:
+	
+	\paragraph{} Look for a pair of items, one inside and the outer outside the knapsacks, and see if it is possible to exchange those items. If the exchange yields a better solution, swap the items.
+	
+\end{itemize}
+
+
+\printbibliography
+
+\end{document}

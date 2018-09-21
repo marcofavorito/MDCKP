@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+
+#Latex
+*.aux
+*.bbl
+*.blg
+*.bcf
+*-blx.bib
+*.log
+*.synctex.gz
+*.run.xml
+
