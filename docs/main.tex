@@ -73,10 +73,36 @@ The simplest approximation algorithm one can think of is the following:
 We provided an implementation of the approximation algorithm in C++. 
 
 The input file should have this format:
-\begin{align}
-&n\ m
-&
-\end{align}
+\begin{align*}
+&n\ m								    \\
+&c_1 \; c_2 \; \dots \; c_m			    \\
+&p_1 \; w_1							    \\
+& \vdots							    \\
+&p_n \; w_n							    \\
+& i \; j \; \;	(\forall (i,j)\in E)	\\
+\end{align*}
+
+Whereas the output file:
+
+\begin{align*}
+&\sum_j^m \sum_i^n p_i x_{ij}			\\
+&x_{11} \; x_{21} \; \dots \; x_{n1}    \\
+\vdots									\\
+&x_{1m} \; x_{2m} \; \dots \; x_{nm}    \\
+\end{align*}
+
+\subsection{Example}
+
+To build the solution:
+\begin{verbatim}
+make
+\end{verbatim}
+
+To run the algorithm:
+\begin{verbatim}
+bin/test_main < input_file
+\end{verbatim}
+
 
 \printbibliography
 

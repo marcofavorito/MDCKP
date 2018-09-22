@@ -46,3 +46,4 @@ obj
 # VSCode
 .vscode
 
+bin/*
