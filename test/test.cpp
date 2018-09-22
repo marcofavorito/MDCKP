@@ -4,7 +4,7 @@
 int main()
 {
     MDCKProblem p = MDCKProblem::read_from_stdin();
-
-    cout << p.to_string() << endl;
+    solve(p);
+    cout << p.solution_to_string() << endl;
     return 0;
 }

@@ -1,7 +1,7 @@
-#ifndef KNAPSACK_H
-#define KNAPSACK_H
+#ifndef KNAPSACK_HPP
+#define KNAPSACK_HPP
 
-#include <list>
+#include <vector>
 #include <set>
 #include "item.hpp"
 
@@ -23,8 +23,7 @@ class Knapsack
     void add_item(Item &it);
     void remove_item(Item &it);
     int get_residual_capacity();
-    std::set<int> fill_greedly(std::list<Item *> &all_items);
-
+    std::set<int> fill_greedly(vector<Item *> &all_items);
 };
 
 #endif

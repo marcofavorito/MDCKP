@@ -1,5 +1,5 @@
-#ifndef MDCKPROBLEM_H
-#define MDCKPROBLEM_H
+#ifndef MDCKPROBLEM_HPP
+#define MDCKPROBLEM_HPP
 
 #include <iostream>
 #include <sstream>
@@ -24,6 +24,7 @@ class MDCKProblem{
       vector<Item *> items_by_decreasing_profit_per_weight;
 
       static MDCKProblem read_from_stdin();
+      int compute_score();
       string to_string();
       string solution_to_string();
 };

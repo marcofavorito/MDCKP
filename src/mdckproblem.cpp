@@ -4,7 +4,7 @@ tuple<int, int> _read_first_line();
 tuple<int, int> _read_item_line();
 vector<Knapsack> _read_knapsacks(int m);
 vector<Item> _read_items(int n);
-void _read_incompatibilities(vector<Item> items);
+void _read_incompatibilities(vector<Item> &items);
 
 tuple<int, int> _read_first_line()
 {
@@ -73,7 +73,7 @@ vector<T *> from_vector_of_objects_to_vector_of_pointers(vector<T> &l)
     return result;
 }
 
-void _read_incompatibilities(vector<Item> items){
+void _read_incompatibilities(vector<Item> &items){
     int i, j;
     istringstream iss;
     std::string line;
@@ -84,6 +84,14 @@ void _read_incompatibilities(vector<Item> items){
         items[i].incompatible_items_ids.insert(j);
         items[j].incompatible_items_ids.insert(i);
     }
+}
+
+int MDCKProblem::compute_score(){
+    int score = 0;
+    for (Knapsack k: this->knapsacks){
+        score += k.total_profit;
+    }
+    return score;
 }
 
 MDCKProblem MDCKProblem::read_from_stdin()
@@ -121,22 +129,26 @@ string MDCKProblem::to_string(){
     for (Item it : this->items)
     {
         // s += "\t" + std::to_string(it.id) + ", " + std::to_string(it.profit) + ", " + std::to_string(it.weight) + "\n";
-        s += std::to_string(it.profit) + " " + std::to_string(it.weight);
+        s += std::to_string(it.profit) + " " + std::to_string(it.weight) + ": ";
+        for (int i : it.incompatible_items_ids){
+            s += std::to_string(i) + ", ";
+        }
+        s += "\n";
     }
-    s+="\n";
 
     return s;
 }
 
 string MDCKProblem::solution_to_string(){
     string s = "";
-    s += std::to_string(this->score) + "\n";
+    s += std::to_string(this->compute_score()) + "\n";
     for (Knapsack k: this->knapsacks){
         for (Item * it : k.items){
             s += std::to_string(it->id) + " ";
         }
         s += "\n";
     }
+    s.pop_back();
 
     return s;
 }

@@ -33,11 +33,10 @@ int Knapsack::get_residual_capacity(){
     return this->capacity - this->occupied_space;
 }
 
-std::set<int> Knapsack::fill_greedly(std::list<Item *> &all_items){
-    std::set<int> inserted_bricks_ids;
+set<int> Knapsack::fill_greedly(vector<Item *> &all_items){
+    set<int> inserted_bricks_ids;
     for (Item *&it : all_items)
     {
-
         if (it->is_assigned() && this->is_compatible(*it))
         {
             this->add_item(*it);
