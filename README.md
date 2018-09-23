@@ -43,7 +43,8 @@ LD_LIBRARY_PATH="<lib-dir>" myprog < data/input_test_2
 ```
 
 It should print:
-```71
+```
+71
 1 5 9 13
 2 3 4
 0 12
