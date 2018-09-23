@@ -46,4 +46,9 @@ obj
 # VSCode
 .vscode
 
+
 bin/*
+!bin/.gitkeep 
+lib/*
+!lib/.gitkeep 
+.ignore

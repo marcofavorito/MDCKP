@@ -1,15 +1,15 @@
 #include "mdckproblem.hpp"
 
-tuple<int, int> _read_first_line();
-tuple<int, int> _read_item_line();
-vector<Knapsack> _read_knapsacks(int m);
-vector<Item> _read_items(int n);
-void _read_incompatibilities(vector<Item> &items);
+tuple<int, int> _read_first_line(istream &is);
+tuple<int, int> _read_item_line(istream &is);
+vector<Knapsack> _read_knapsacks(istream &is, int m);
+vector<Item> _read_items(istream &is, int n);
+void _read_incompatibilities(istream &is, vector<Item> &items);
 
-tuple<int, int> _read_first_line()
+tuple<int, int> _read_first_line(istream &is)
 {
     string line;
-    getline(cin, line);
+    getline(is, line);
     istringstream iss(line);
 
     int N, M;
@@ -17,11 +17,12 @@ tuple<int, int> _read_first_line()
     return make_tuple(N, M);
 }
 
-vector<Knapsack> _read_knapsacks(int m){
+vector<Knapsack> _read_knapsacks(istream &is, int m)
+{
 
     vector<Knapsack> knapsacks;
     string line;
-    getline(cin, line);
+    getline(is, line);
     istringstream iss(line);
 
     int capacity;
@@ -34,10 +35,10 @@ vector<Knapsack> _read_knapsacks(int m){
     return knapsacks;
 }
 
-tuple<int, int> _read_item_line()
+tuple<int, int> _read_item_line(istream &is)
 {
     string line;
-    getline(cin, line);
+    getline(is, line);
     istringstream iss(line);
 
     int profit, weight;
@@ -45,7 +46,7 @@ tuple<int, int> _read_item_line()
     
     return make_tuple(profit, weight);
 }
-vector<Item> _read_items(int B)
+vector<Item> _read_items(istream &is, int B)
 {
     vector<Item> items;
     Item* it;
@@ -54,7 +55,7 @@ vector<Item> _read_items(int B)
     
     for (int id = 0; id < B; id++)
     {
-        tie(profit, weight) = _read_item_line();
+        tie(profit, weight) = _read_item_line(is);
         Item it = Item(id, profit, weight);
         items.push_back(it);
     }
@@ -73,11 +74,11 @@ vector<T *> from_vector_of_objects_to_vector_of_pointers(vector<T> &l)
     return result;
 }
 
-void _read_incompatibilities(vector<Item> &items){
+void _read_incompatibilities(istream &is, vector<Item> &items){
     int i, j;
     istringstream iss;
     std::string line;
-    while (getline(cin, line))
+    while (getline(is, line))
     {
         istringstream iss(line);
         iss >> i >> j;
@@ -94,13 +95,13 @@ int MDCKProblem::compute_score(){
     return score;
 }
 
-MDCKProblem MDCKProblem::read_from_stdin()
+MDCKProblem MDCKProblem::read_from_istream(istream &is)
 {
     MDCKProblem data;
-    tie(data.n, data.m) = _read_first_line();
-    data.knapsacks = _read_knapsacks(data.m);
-    data.items = _read_items(data.n);
-    _read_incompatibilities(data.items);
+    tie(data.n, data.m) = _read_first_line(is);
+    data.knapsacks = _read_knapsacks(is, data.m);
+    data.items = _read_items(is, data.n);
+    _read_incompatibilities(is, data.items);
 
     vector<Item *> item_pointers = from_vector_of_objects_to_vector_of_pointers(data.items);
 
@@ -122,13 +123,11 @@ string MDCKProblem::to_string(){
     string s = "";
     s += std::to_string(this->n) + " " + std::to_string(this->m) + "\n";
     for (Knapsack k: this->knapsacks){
-        // s += "\t" + std::to_string(k.id) + ", " + std::to_string(k.capacity) + "\n";
         s += std::to_string(k.capacity) + " ";
     }
     s+="\n";
     for (Item it : this->items)
     {
-        // s += "\t" + std::to_string(it.id) + ", " + std::to_string(it.profit) + ", " + std::to_string(it.weight) + "\n";
         s += std::to_string(it.profit) + " " + std::to_string(it.weight) + ": ";
         for (int i : it.incompatible_items_ids){
             s += std::to_string(i) + ", ";

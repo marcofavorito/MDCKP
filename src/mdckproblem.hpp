@@ -23,7 +23,7 @@ class MDCKProblem{
       vector<Item *> items_by_increasing_profit_per_weight;
       vector<Item *> items_by_decreasing_profit_per_weight;
 
-      static MDCKProblem read_from_stdin();
+      static MDCKProblem read_from_istream(istream &is);
       int compute_score();
       string to_string();
       string solution_to_string();
