@@ -1,4 +1,7 @@
 # MDCKP
+
+![](https://img.shields.io/badge/version-c%2B%2B14-ff69b4.svg)
+
 Multiple Disjunctively Constrained Knapsak problem: definition and an approximation algorithm implementation.
 
 The problem is formally explained in [this document](https://github.com/MarcoFavorito/MDCKP/blob/master/docs/main.pdf).
