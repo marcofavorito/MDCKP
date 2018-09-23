@@ -20,7 +20,7 @@ class Item
 
     double profit_per_weight();
     bool is_assigned();
-    bool reset_assignment();
+    void reset_assignment();
     static bool compare(Item &i, Item &j);
     bool operator==(const Item &it) const;
     bool operator<(const Item &it) const;

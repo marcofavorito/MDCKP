@@ -4,7 +4,7 @@ Item::Item(const int id, const int profit, const int weight) : id(id), profit(pr
 
 double Item::profit_per_weight(){ return float(profit) / weight; }
 bool Item::is_assigned(){ return this->assignment == NO_ASSIGNMENT;}
-bool Item::reset_assignment() { this->assignment = NO_ASSIGNMENT; }
+void Item::reset_assignment() { this->assignment = NO_ASSIGNMENT; }
 
 // compare by mean, and break ties by considering 'worse' the Items with 'more' weight.
 bool Item::compare(Item &i, Item &j) {

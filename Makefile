@@ -15,8 +15,8 @@ BIN_NAME=$(BIN_DIR)/mdckp
 
 CC=g++
 DEPS=
-CFLAGS=-std=c++14
-LIB_FLAGS=-shared -Wl,-soname,$(LIB_NAME).$(MAJOR)
+CFLAGS=-Wall -std=c++14
+LIB_FLAGS=-shared -Wl,-soname,lib$(APP_NAME).so.$(MAJOR)
 LIBS=-l$(APP_NAME)
 LATEX=pdflatex -synctex=1 -interaction=nonstopmode
 

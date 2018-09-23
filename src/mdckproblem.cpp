@@ -49,8 +49,6 @@ tuple<int, int> _read_item_line(istream &is)
 vector<Item> _read_items(istream &is, int B)
 {
     vector<Item> items;
-    Item* it;
-
     int profit, weight;
     
     for (int id = 0; id < B; id++)
@@ -67,7 +65,7 @@ template <class T>
 vector<T *> from_vector_of_objects_to_vector_of_pointers(vector<T> &l)
 {
     vector<T *> result = vector<T *>();
-    for (int i = 0; i < l.size(); i++)
+    for (unsigned int i = 0; i < l.size(); i++)
     {
         result.push_back(&l[i]);
     }
