@@ -1,4 +1,4 @@
-INCLUDE_DIR=./include
+INCLUDE_DIR=include
 SRC_DIR=src
 LIB_DIR=lib
 OBJ_DIR=obj
@@ -30,7 +30,8 @@ all: build
 build: build_lib build_bin
 
 test: build
-	$(CC) $(CFLAGS) $(TEST_DIR)/test_mdckp.cpp -I$(INCLUDE_DIR) -L$(LIB_DIR) -l$(APP_NAME) -o $(TEST_DIR)/test_mdckp && $(TEST_DIR)/test_mdckp --success
+	$(CC) $(CFLAGS) $(TEST_DIR)/test_mdckp.cpp -I$(INCLUDE_DIR) -L$(LIB_DIR) -l$(APP_NAME) -o $(TEST_DIR)/a.out
+	LD_LIBRARY_PATH="./lib" $(TEST_DIR)/a.out --success
 
 docs:
 	make -C $(DOCS_DIR) all
