@@ -25,7 +25,7 @@ OBJ = $(patsubst %,$(OBJ_DIR)/%,$(_OBJ))
 
 .PHONY: clean all build docs
 
-all: build docs
+all: build
 
 build: build_lib build_bin
 

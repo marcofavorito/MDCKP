@@ -18,4 +18,4 @@ main.bib : main.tex
 	$(TEX) main.tex
 
 clean:
-	rm -f *.aux *.bbl *.blg *-blx.bib *.log *.run.xml *.synctex.gz main.pdf
+	rm -f *.aux *.bbl *.blg *-blx.bib *.log *.run.xml *.synctex.gz
