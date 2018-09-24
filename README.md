@@ -58,7 +58,8 @@ where `<include-dir>` and `<lib-dir>` are, respectively, the directories where `
 
 ### Input format
 
-```N M
+```
+N M
 c1 c2 c3 ... cm
 p1 w1
 p2 w2
