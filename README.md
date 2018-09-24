@@ -23,12 +23,25 @@ make
 LD_LIBRARY_PATH="./lib" bin/mdckp < input_file
 ```
 
-- Example:
+### Example:
 ```
 LD_LIBRARY_PATH="./lib" bin/mdckp < data/input_test_2
 ```
 
-For the source, look at [`examples/mdckp.cpp`](https://github.com/MarcoFavorito/MDCKP/blob/master/examples/mdckp.cpp).
+- Test it with:
+
+It should print:
+```
+71
+1 5 9 13
+2 3 4
+0 12
+6 7 10
+```
+
+See [output format](#input-and-output-file-formats) for more details.
+
+For the source of this example, look at [`examples/mdckp.cpp`](https://github.com/MarcoFavorito/MDCKP/blob/master/examples/mdckp.cpp).
 
 ## Use in your project
 
@@ -40,20 +53,6 @@ g++ myprog.cpp -o myprog -I<include-dir> -L<lib-dir> -lmdckp -std=c++14
 ```
 
 where `<include-dir>` and `<lib-dir>` are, respectively, the directories where `mdckp.hpp` and `libmdckp.so.1` are stored.
-- Test it with:
-
-```
-LD_LIBRARY_PATH="<lib-dir>" myprog < data/input_test_2
-```
-
-It should print:
-```
-71
-1 5 9 13
-2 3 4
-0 12
-6 7 10
-```
 
 ## Input and output file formats
 
