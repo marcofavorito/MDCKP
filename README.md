@@ -7,6 +7,10 @@ Multiple Disjunctively Constrained Knapsak problem: definition and an approximat
 The problem is formally explained in [this document](https://github.com/MarcoFavorito/MDCKP/blob/master/docs/main.pdf).
 In this repo you can find also an implementation in C++ of a naive algorithm for a simple solution.
 
+- [How to use](#how-to-use)
+- [Use it in your project](#use-in-your-project)
+- [Input and output file formats](#input-and-output-file-formats)
+
 ## How to use
 
 - Build the software:
@@ -19,7 +23,7 @@ make
 LD_LIBRARY_PATH="./lib" bin/mdckp < input_file
 ```
 
-## Examples
+- Example:
 ```
 LD_LIBRARY_PATH="./lib" bin/mdckp < data/input_test_2
 ```
