@@ -15,17 +15,20 @@ In this repo you can find also an implementation in C++ of a naive algorithm for
 
 - Build the software:
 ```
-make
+mkdir build
+cd build
+cmake ..
+make -j4
 ```
 
 - Run the algorithm:
 ```
-LD_LIBRARY_PATH="./lib" bin/mdckp < input_file
+build/apps/mdckp-cli/mdckp-cli < input_file
 ```
 
 ### Example:
 ```
-LD_LIBRARY_PATH="./lib" bin/mdckp < data/input_test_2
+build/apps/mdckp-cli/mdckp-cli < data/input_test_2
 ```
 
 - Test it with:
@@ -42,17 +45,6 @@ It should print:
 See [output format](#input-and-output-file-formats) for more details.
 
 For the source of this example, look at [`examples/mdckp.cpp`](https://github.com/MarcoFavorito/MDCKP/blob/master/examples/mdckp.cpp).
-
-## Use in your project
-
-- Do `make`. Now in `lib` you should have `libmdckp.so.1`
-- In your code, `#include "mdckp.hpp"`, that you can find in [`include/mdckp.hpp`](https://github.com/MarcoFavorito/MDCKP/blob/master/include/mdckp.hpp)
-- Compile your source file (e.g. `myprog.cpp`) with the following:
-```
-g++ myprog.cpp -o myprog -I<include-dir> -L<lib-dir> -lmdckp -std=c++14
-```
-
-where `<include-dir>` and `<lib-dir>` are, respectively, the directories where `mdckp.hpp` and `libmdckp.so.1` are stored.
 
 ## Input and output file formats
 
@@ -120,5 +112,5 @@ x1j x2j ... = ids of items assigned to knapsack j
 
 Try it out:
 ```
-LD_LIBRARY_PATH="./lib" ./bin/mdckp < data/input_test_1
+/build/app/mdckp-cli/mdckp-cli < data/input_test_1
 ```
