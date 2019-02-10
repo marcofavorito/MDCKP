@@ -68,8 +68,5 @@ tags
 
 build/
 
-bin/*
-!bin/.gitkeep 
-lib/*
-!lib/.gitkeep 
 .ignore
+
