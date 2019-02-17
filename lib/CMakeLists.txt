@@ -41,4 +41,5 @@ install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${LIB_NAME})
 
 #test
 enable_testing ()
+add_subdirectory(test)
 

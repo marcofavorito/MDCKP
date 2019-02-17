@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
+#include "catch2/catch.hpp"
 
 #include "mdckp.hpp"
 
@@ -12,12 +12,18 @@ int solve(string path)
 {
     ifstream myfile;
     myfile.open(path);
-    MDCKProblem p = MDCKProblem::read_from_istream(myfile);
-    solve(p);
+    mdckp::MDCKProblem p = mdckp::MDCKProblem::read_from_istream(myfile);
+    mdckp::solve(p);
     return p.compute_score();
 }
 
-TEST_CASE("Test case")
+TEST_CASE("read from file 1", "[mdckp]")
+{
+    REQUIRE(solve("data/input_test_1") == 20);
+}
+
+TEST_CASE("read from file 2", "[mdckp]")
 {
     REQUIRE(solve("data/input_test_2") == 71);
 }
+

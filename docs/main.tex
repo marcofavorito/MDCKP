@@ -95,12 +95,14 @@ Whereas the output file:
 
 To build the solution:
 \begin{verbatim}
-make
+mkdir build && cd build
+cmake ..
+make -j4
 \end{verbatim}
 
 To run the algorithm:
 \begin{verbatim}
-bin/test_main < input_file
+build/apps/mdckp-cli/mdckp-cli < input_file
 \end{verbatim}
 
 
