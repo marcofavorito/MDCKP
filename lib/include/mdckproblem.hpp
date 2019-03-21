@@ -20,13 +20,13 @@ namespace mdckp{
           int score = 0;
           std::vector<Knapsack> knapsacks;
           std::vector<Item> items;
-          std::vector<Item *> items_by_increasing_profit_per_weight;
-          std::vector<Item *> items_by_decreasing_profit_per_weight;
+          std::vector<Item *> itemsByIncreasingProfitPerWeight;
+          std::vector<Item *> itemsByDecreasingProfitPerWeight;
     
-          static MDCKProblem read_from_istream(std::istream &is);
-          int compute_score();
-          std::string to_string();
-          std::string solution_to_string();
+          static MDCKProblem readFromIstream(std::istream &is);
+          int computeScore();
+          std::string toString();
+          std::string solutionToString();
     };
 }
 

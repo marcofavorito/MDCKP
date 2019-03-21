@@ -87,7 +87,7 @@ namespace mdckp{
         }
     }
     
-    int MDCKProblem::compute_score(){
+    int MDCKProblem::computeScore(){
         int score = 0;
         for (Knapsack k: this->knapsacks){
             score += k.total_profit;
@@ -95,7 +95,7 @@ namespace mdckp{
         return score;
     }
     
-    MDCKProblem MDCKProblem::read_from_istream(std::istream &is)
+    MDCKProblem MDCKProblem::readFromIstream(std::istream &is)
     {
         MDCKProblem data;
         std::tie(data.n, data.m) = _read_first_line(is);
@@ -105,21 +105,21 @@ namespace mdckp{
     
         std::vector<Item *> item_pointers = from_vector_of_objects_to_vector_of_pointers(data.items);
     
-        data.items_by_decreasing_profit_per_weight = item_pointers;
-        data.items_by_increasing_profit_per_weight = item_pointers;
+        data.itemsByDecreasingProfitPerWeight = item_pointers;
+        data.itemsByIncreasingProfitPerWeight = item_pointers;
         // sort items by mean value, decreasing
-        std::sort(data.items_by_decreasing_profit_per_weight.begin(),
-                  data.items_by_decreasing_profit_per_weight.end(),
+        std::sort(data.itemsByDecreasingProfitPerWeight.begin(),
+                  data.itemsByDecreasingProfitPerWeight.end(),
                   [](Item *a, Item *b) { return !Item::compare(*a, *b); });
         // sort items by mean value, increasing
-        std::sort(data.items_by_increasing_profit_per_weight.begin(),
-                  data.items_by_increasing_profit_per_weight.end(),
+        std::sort(data.itemsByIncreasingProfitPerWeight.begin(),
+                  data.itemsByIncreasingProfitPerWeight.end(),
                   [](Item *a, Item *b) { return Item::compare(*a, *b); });
     
         return data;
     }
     
-    std::string MDCKProblem::to_string(){
+    std::string MDCKProblem::toString(){
         std::string s = "";
         s += std::to_string(this->n) + " " + std::to_string(this->m) + "\n";
         for (Knapsack k: this->knapsacks){
@@ -138,9 +138,9 @@ namespace mdckp{
         return s;
     }
     
-    std::string MDCKProblem::solution_to_string(){
+    std::string MDCKProblem::solutionToString(){
         std::string s = "";
-        s += std::to_string(this->compute_score()) + "\n";
+        s += std::to_string(this->computeScore()) + "\n";
         for (Knapsack k: this->knapsacks){
             for (Item * it : k.items){
                 s += std::to_string(it->id) + " ";

@@ -18,9 +18,9 @@ namespace mdckp{
     
         Item(const int id, const int profit, const int weight);
     
-        double profit_per_weight();
-        bool is_assigned();
-        void reset_assignment();
+        double profitPerWeight();
+        bool isAssigned();
+        void resetAssignment();
         static bool compare(Item &i, Item &j);
         bool operator==(const Item &it) const;
         bool operator<(const Item &it) const;

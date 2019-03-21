@@ -19,11 +19,11 @@ namespace mdckp{
         
         Knapsack(int id, int capacity);
     
-        bool is_compatible(Item &it);
-        void add_item(Item &it);
-        void remove_item(Item &it);
-        int get_residual_capacity();
-        std::set<int> fill_greedly(std::vector<Item *> &all_items);
+        bool isCompatible(Item &it);
+        void addItem(Item &it);
+        void removeItem(Item &it);
+        int getResidualCapacity();
+        std::set<int> fillGreedly(std::vector<Item *> &all_items);
     };
 }
 

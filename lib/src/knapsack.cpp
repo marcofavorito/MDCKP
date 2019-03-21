@@ -9,7 +9,7 @@ namespace mdckp{
         this->capacity = capacity;
     }
     
-    bool Knapsack::is_compatible(Item &it){
+    bool Knapsack::isCompatible(Item &it){
         std::set<int> common_ids;
         std::set_intersection(this->item_ids.begin(), this->item_ids.end(),
                          it.incompatible_items_ids.begin(), it.incompatible_items_ids.end(),
@@ -17,31 +17,31 @@ namespace mdckp{
         return common_ids.size()==0;
     }
     
-    void Knapsack::add_item(Item &it){
+    void Knapsack::addItem(Item &it){
         this->items.insert(&it);
         this->item_ids.insert(it.id);
         this->total_profit += it.profit;
         it.assignment = this->id;
     }
     
-    void Knapsack::remove_item(Item &it){
+    void Knapsack::removeItem(Item &it){
         this->items.erase(&it);
         this->item_ids.erase(it.id);
         this->total_profit -= it.profit;
-        it.reset_assignment();
+        it.resetAssignment();
     }
     
-    int Knapsack::get_residual_capacity(){
+    int Knapsack::getResidualCapacity(){
         return this->capacity - this->occupied_space;
     }
     
-    std::set<int> Knapsack::fill_greedly(std::vector<Item *> &all_items){
+    std::set<int> Knapsack::fillGreedly(std::vector<Item *> &all_items){
         std::set<int> inserted_bricks_ids;
         for (Item *&it : all_items)
         {
-            if (it->is_assigned() && this->is_compatible(*it))
+            if (it->isAssigned() && this->isCompatible(*it))
             {
-                this->add_item(*it);
+                this->addItem(*it);
                 inserted_bricks_ids.insert(it->id);
             }
         }

@@ -69,4 +69,5 @@ tags
 build/
 
 .ignore
-
+.idea
+cmake-build-debug/

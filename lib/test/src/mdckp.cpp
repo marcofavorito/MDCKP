@@ -12,9 +12,9 @@ int solve(string path)
 {
     ifstream myfile;
     myfile.open(path);
-    mdckp::MDCKProblem p = mdckp::MDCKProblem::read_from_istream(myfile);
+    mdckp::MDCKProblem p = mdckp::MDCKProblem::readFromIstream(myfile);
     mdckp::solve(p);
-    return p.compute_score();
+    return p.computeScore();
 }
 
 TEST_CASE("read from file 1", "[mdckp]")

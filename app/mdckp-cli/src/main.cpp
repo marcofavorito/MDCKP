@@ -5,8 +5,8 @@
 
 int main()
 {
-    mdckp::MDCKProblem p = mdckp::MDCKProblem::read_from_istream(std::cin);
+    mdckp::MDCKProblem p = mdckp::MDCKProblem::readFromIstream(std::cin);
     mdckp::solve(p);
-    std::cout << p.solution_to_string() << std::endl;
+    std::cout << p.solutionToString() << std::endl;
     return 0;
 }
