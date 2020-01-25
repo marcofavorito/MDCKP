@@ -21,17 +21,20 @@ cmake ..
 make -j4
 ```
 
-- Run the algorithm:
+- (from the root) Run the algorithm:
 ```
-build/apps/mdckp-cli/mdckp-cli < input_file
+build/app/mdckp-cli/mdckp-cli < data/input_test_1
 ```
+
+Tested on Ubuntu 19.10 CMake version 3.13.4.
 
 ### Example:
-```
-build/apps/mdckp-cli/mdckp-cli < data/input_test_2
-```
 
 - Test it with:
+```
+build/app/mdckp-cli/mdckp-cli < data/input_test_2
+```
+
 
 It should print:
 ```
